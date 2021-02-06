@@ -4,18 +4,19 @@ const anagram = function (input) {
     let sortedWords = input.map(item => item.split('').sort((left, right) => {
         return left > right
     }).join(''))
-    let reducedObj = new Map()
+    
+    let indexMap = new Map()
     let anagramArray = []
 
     sortedWords.forEach(value => {
-        reducedObj[value] = sortedWords.reduce((acc, cur, index) => {
-            if (value === cur) { acc.push(index) }
-            return acc
+        indexMap[value] = sortedWords.reduce((accumulator, currentValue, index) => {
+            if (value === currentValue) { accumulator.push(index) }
+            return accumulator
         }, [])
     })
 
-    for (const item in reducedObj) {
-        anagramArray.push(reducedObj[item].map(value => input[value]).sort((left, right) => {
+    for (const item in indexMap) {
+        anagramArray.push(indexMap[item].map(index => input[index]).sort((left, right) => {
             return left > right
         }))
     }
