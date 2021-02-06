@@ -1,7 +1,9 @@
 
 const anagram = function (input) {
     input = input.filter((value,index) => !input.includes(value,index+1))
-    let sortedWords = input.map(item => item.split('').sort().join(''))
+    let sortedWords = input.map(item => item.split('').sort((left, right) => {
+        return left > right
+    }).join(''))
     let reducedObj = new Map()
     let anagramArray = []
 
