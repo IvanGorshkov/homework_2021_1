@@ -1,28 +1,29 @@
+"use strict"
 
-const anagram = function (input) {
-    input = input.filter((value,index) => !input.includes(value,index+1))
-    let sortedWords = input.map(item => item.split('').sort((left, right) => {
-        return left > right
-    }).join(''))
+const anagram = (input) => {
+    const arr = input.filter((value,index) => !input.includes(value,index+1));
+    const sortedWords = arr.map((item) => item
+        .split('')
+        .sort()
+        .join('')
+    );
 
-    let indexMap = new Map()
+    const indexMap = {};
     sortedWords.forEach(value => {
         indexMap[value] = sortedWords.reduce((accumulator, currentValue, index) => {
-            if (value === currentValue) { accumulator.push(index) }
-            return accumulator
-        }, [])
-    })
+            if (value === currentValue) { accumulator.push(index); }
+            return accumulator;
+        }, []);
+    });
 
-    let anagramArray = []
+    const anagramArray = [];
     for (const item in indexMap) {
-        anagramArray.push(indexMap[item].map(index => input[index]).sort((left, right) => {
-            return left > right
-        }))
+        anagramArray.push(indexMap[item]
+            .map((index) => arr[index])
+            .sort());
     }
 
     return anagramArray.filter((value) => {
-        return value.length > 1
-    }).sort((left, right) => {
-        return left[0] > right[0]
-    })
-}
+        return value.length > 1;
+    }).sort();
+};
