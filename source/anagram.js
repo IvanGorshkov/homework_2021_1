@@ -1,6 +1,7 @@
 'use strict';
 
 /***
+ * @author Ivan Gorshkov
  * get object of item:index value
  *
  * @param {string[]} sortedWords - array of sorted chars in words in alphabet order
@@ -19,6 +20,7 @@ const getAnagramWordsIndex = (sortedWords) => {
 }
 
 /***
+ * @author Ivan Gorshkov
  * get array of arrays of anagram words from indexMap and defualt array of words
  *
  * @param {Object.<string, {number[]}>} indexMap - object of item:index value
@@ -39,6 +41,7 @@ const getAnagramArray = (indexMap, arr) => {
 }
 
 /***
+ * @author Ivan Gorshkov
  * get array of arrays of anagram words input array of words
  *
  * @param {string[]} input - array of words
