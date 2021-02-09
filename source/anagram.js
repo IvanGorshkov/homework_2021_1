@@ -3,8 +3,8 @@
 /***
  * get object of item:index value
  *
- * @param {array} sortedWords - array of sorted chars in words in alphabet order
- * @returns {object}
+ * @param {string[]} sortedWords - array of sorted chars in words in alphabet order
+ * @returns {Object.<string, {number[]}>}
  */
 const getAnagramWordsIndex = (sortedWords) => {
     const indexMap = {};
@@ -14,15 +14,16 @@ const getAnagramWordsIndex = (sortedWords) => {
             return accumulator;
         }, []);
     });
+    console.log(indexMap)
     return indexMap;
 }
 
 /***
  * get array of arrays of anagram words from indexMap and defualt array of words
  *
- * @param {object} indexMap - object of item:index value
- * @param {array} arr - unique array of words
- * @returns {array} - anagram array of arrays
+ * @param {Object.<string, {number[]}>} indexMap - object of item:index value
+ * @param {string[]} arr - unique array of words
+ * @returns {string[][]} - anagram array of arrays
  */
 const getAnagramArray = (indexMap, arr) => {
     const anagramArray = [];
@@ -40,8 +41,8 @@ const getAnagramArray = (indexMap, arr) => {
 /***
  * get array of arrays of anagram words input array of words
  *
- * @param {array} input - array of words
- * @returns {array} - anagram array of arrays
+ * @param {string[]} input - array of words
+ * @returns {string[][]} - anagram array of arrays
  */
 const anagram = (input) => {
     const arr = input.filter((value,index) => !input.includes(value,index+1));
